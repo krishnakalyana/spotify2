@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Sidebar from '../components/Sidebar'
 import Center from '../components/Center'
+import Player from '../components/Player'
 import { getSession } from 'next-auth/react'
 
 export default function Home() {
@@ -9,16 +10,22 @@ export default function Home() {
       <main className="flex">
         <Sidebar />
         <Center />
-        {/* Center */}
+       
       </main>
+      <div
+         className='sticky bottom-0 h-100'
+         >
+          <Player/>
+        </div>
+
       <div>
-        {/* Player */}
+      
       </div>
     </div>
   )
 }
 
-export async function getServerSideprops(context){
+export async function getServerSideProps(context){
   const session = await getSession(context)
   return{
     props:{

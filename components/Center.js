@@ -1,5 +1,5 @@
 import { ChevronDownIcon,UserIcon } from '@heroicons/react/outline';
-import {useSession} from 'next-auth/react';
+import {useSession,signOut} from 'next-auth/react';
 import { shuffle } from 'lodash';
 import {useState,useEffect} from 'react' 
 import {playlistIdState,playlistState} from '../atoms/playlistAtom'
@@ -35,7 +35,10 @@ function Center (){
     return (
         <div className="flex-grow  h-screen overflow-y-scroll scrollbar-hide">
             <header className="absolute top-5 right-8">
-                <div className="flex items-center space-x-2 bg-black opacity-80 hover:opacity-90  cursor-pointer rounded-full p-1 pr-2 text-white">
+                <div className="flex items-center space-x-2 bg-black opacity-80 hover:opacity-90  
+                cursor-pointer rounded-full p-1 pr-2 text-white"
+                onClick={signOut}
+                >
                     {/* <img className="rounded-full h-10 w-10" src={'/public/favicon.ico'} alt="" /> */}
                     <UserIcon className="rounded-full h-6 w-6"/>
                     <h2>{session?.user.name}</h2>
